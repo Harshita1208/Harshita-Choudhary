@@ -1,12 +1,14 @@
 {{ 'gift-banner.css' | asset_url | stylesheet_tag }}
 <script src="{{ toggle-drawer.js | asset_url }}"></script>
 
-<div class="color-{{ section.settings.color_scheme }} gradient gift-banner-wrapper">
+<div class="gradient gift-banner-wrapper">
   <div class="section-{{ section.id }}-padding">
     <div class="main-slideshow-banner">
 
+      <div class="main-top-banner color-{{ section.settings.top_color_scheme }}">
+      <div class="page-width">
       <div class="main-toggle-mobile">
-       {% render toggle-drawer %}
+       {% render 'toggle-drawer' %}
       </div>
        <div class="main-toggle-dekstop">
        {% if section.settings.logo != blank %}
@@ -24,13 +26,16 @@
           </div>
         {% endif %}
       </div>
+      </div>
+      </div>
 
       {% if section.settings.image_first != blank %}
       <div class="main-banner-image {% if section.settings.show_image %} show_image {% endif %}">
         <img src="{{ section.settings.image_first | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="auto" loading="lazy" /> 
       </div>
       {% endif %}
-      <div class="main-banner-content-wrapper">
+
+      <div class="main-banner-content-wrapper color-{{ section.settings.color_scheme }}">
         <div class="main-banner-content left-column">
           {% if section.settings.heading != blank %}
           <h1 class="no-margin">{{ section.settings.heading }}</h1>
@@ -61,7 +66,14 @@
           {% endif %}
         </div>
       </div>
-    </div>
+
+      {% if section.settings.bottom_text != blank %}
+      <div class="bottom-text color-{{ section.settings.bottom_color_scheme }}">
+        <p>{{ section.settings.bottom_text }}</p>
+      </div>
+      {% endif %}
+
+    </div>    
   </div>
 </div>
 
@@ -75,6 +87,12 @@
       "type": "header",
       "content": "Top Banner"
     }, 
+    {
+      "type": "color_scheme",
+      "id": "top_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
     {
       "type": "image_picker",
       "id": "logo",
@@ -144,7 +162,23 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    }
+    },
+    {
+      "type":"header",
+      "content":"Bottom Text"
+    },
+    {
+      "type": "text",
+      "id": "bottom_text",
+      "label": "Bottom Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "bottom_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+
   ],
   "presets": [
     {

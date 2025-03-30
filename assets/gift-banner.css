@@ -1,28 +1,30 @@
-.main-toggle-mobile {
-    display: none;
-}
-.main-toggle-dekstop {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-}
-.main-toggle-dekstop .logo img {
-   display: block;
-   width: 100%;
-}
-.top_text {
-    margin: 0;
-    font-size: 16px;
-    line-height: 13.42px;
-    letter-spacing: 0px;
-    text-align: center;
-}
-
-.gift-banner-wrapper {
-    width: 100%;
-    overflow: hidden;
+  .main-toggle-mobile {
+      display: none;
   }
-  
+  .main-toggle-dekstop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+  }
+  .main-toggle-dekstop .logo img {
+    display: block;
+    width: 151.44px;
+    height: 19px;
+  }
+  .top_text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 13.42px;
+      letter-spacing: 0px;
+      text-align: center;
+  }
+
+  .gift-banner-wrapper {
+      width: 100%;
+      overflow: hidden;
+  }
+    
   .main-slideshow-banner {
     position: relative;
     width: 100%;
@@ -79,33 +81,42 @@
   }
   
   .main-banner-content h1 {
-    font-size: 70px;
-    line-height: 100%;
-    margin: 0;
-    letter-spacing: 0;
-}
-  
+      font-size: 70px;
+      line-height: 100%;
+      margin: 0;
+      letter-spacing: 0;
+  }
+    
   .banner-subcontent p {
-    margin: 0;
-    font-size: 20px;
-    line-height: 140%;
-    letter-spacing: 0px;
-}
+      margin: 0;
+      font-size: 20px;
+      line-height: 140%;
+      letter-spacing: 0px;
+  }
   
   .button {
     min-height: 50px;
     padding: 14px 30px 14px 50px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 18px;
+    box-shadow: 0px 2px 4px 0px #00000033;
+  }
+  .button::after, .button::before {
+    display: none;
   }
   
   .btn a {
     font-size: 16px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #fff;
+    color: inherit;
+    letter-spacing: 0;
+    line-height: normal;
   }
+  .button-secondary svg path {
+    fill: #000;
+}
   
   .right-column .mobile-btn {
     display: none;
@@ -114,7 +125,20 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+    width: 100%;
+    max-width: max-content;
   }
+
+  .bottom-text p {
+    font-size: 16px;
+    line-height: 13.42px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin: 0;
+  }
+  .bottom-text {
+    padding: 10px;
+}
   
   @media (max-width: 1024px) {
     .main-banner-content-wrapper {
@@ -168,8 +192,12 @@
     }
     
     .right-column {
-      min-height: 50vh;
+      min-height: auto;
+      height: 50vh;
     }
+    .natural-image {
+      object-fit: cover;
+  }
     .main-banner-image {
         display: none;
     }
@@ -181,6 +209,7 @@
     }
     .main-toggle-mobile {
        display: flex;
+       align-items: center;
     }
     .toggle-icon button, .toggle-icon button svg  {
         cursor: pointer;
@@ -202,5 +231,8 @@
         opacity: 1;
         padding: 25px;
     }
-
+    .bottom-text p {
+      font-size: 14px;
+    }
+    
 }
