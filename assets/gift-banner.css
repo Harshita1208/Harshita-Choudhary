@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .gift-banner-wrapper {
     width: 100%;
     overflow: hidden;
@@ -156,4 +157,157 @@
     .main-banner-image.show_image{
         display: block;
     }
+=======
+.gift-banner-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .main-slideshow-banner {
+    position: relative;
+    width: 100%;
+  }
+  
+  .main-banner-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .main-banner-content-wrapper {
+    display: flex;
+    width: 100%;
+  }
+  
+  .left-column {
+    width: 40%;
+    max-width: 500px;
+    margin-left: auto;
+    padding: 20px 0 50px 0;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .right-column {
+    width: 60%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .natural-image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .main-banner-content h1 {
+    font-size: 70px;
+    line-height: 100%;
+    margin: 0;
+}
+  
+  .banner-subcontent p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+  
+  .button.button-primary {
+    min-height: 50px;
+    padding: 14px 30px 14px 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn a {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .right-column .mobile-btn {
+    display: none;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  @media (max-width: 1024px) {
+    .main-banner-content-wrapper {
+      flex-direction: column;
+      min-height: auto;
+    }
+    
+    .left-column, .right-column {
+      width: 100%;
+      max-width: none;
+    }
+    
+    .left-column {
+      padding: 30px 20px;
+      gap: 30px;
+    }
+    
+    .right-column {
+      min-height: 60vh;
+    }
+    
+    .main-banner-content h1 {
+      font-size: 48px;
+    }
+    
+    .banner-subcontent p {
+      font-size: 18px;
+    }
+    
+    .desktop-btn {
+      display: none !important;
+    }
+    
+    .mobile-btn {
+      display: flex !important;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .main-banner-content h1 {
+      font-size: 36px;
+    }
+    
+    .banner-subcontent p {
+      font-size: 16px;
+    }
+    
+    .button.button-primary {
+      min-height: 40px;
+      padding: 10px 20px 10px 30px;
+    }
+    
+    .right-column {
+      min-height: 50vh;
+    }
+>>>>>>> b3dde747bdf154ca4e77aefcf44b3f6fefcb53e5
   }
