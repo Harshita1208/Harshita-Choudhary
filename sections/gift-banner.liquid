@@ -1,9 +1,30 @@
 {{ 'gift-banner.css' | asset_url | stylesheet_tag }}
+<script src="{{ toggle-drawer.js | asset_url }}"></script>
 
 <div class="color-{{ section.settings.color_scheme }} gradient gift-banner-wrapper">
   <div class="section-{{ section.id }}-padding">
     <div class="main-slideshow-banner">
-     
+
+      <div class="main-toggle-mobile">
+       {% render toggle-drawer %}
+      </div>
+       <div class="main-toggle-dekstop">
+       {% if section.settings.logo != blank %}
+        <div class="logo">
+          <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" width="100%" height="100%" />
+        </div>
+        {% endif %}
+        {% if section.settings.top_text != blank %}
+        <p class="top_text">{{ section.settings.top_text }}</p>
+        {% endif %}
+        {% if section.settings.top_button_text != blank and section.settings.top_button_url != blank %}
+          <div class="button button-secondary btn desktop-btn no-margin">
+            <a href="{{ section.settings.top_button_url }}">{{ section.settings.top_button_text }}</a>
+            {% render 'right-arrow' %}
+          </div>
+        {% endif %}
+      </div>
+
       {% if section.settings.image_first != blank %}
       <div class="main-banner-image {% if section.settings.show_image %} show_image {% endif %}">
         <img src="{{ section.settings.image_first | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="auto" loading="lazy" /> 
@@ -52,6 +73,30 @@
   "settings": [
     {
       "type": "header",
+      "content": "Top Banner"
+    }, 
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "top_text",
+      "label": "Top Text"
+    },
+    {
+      "type": "text",
+      "id": "top_button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "top_button_url",
+      "label": "Button Url"
+    },
+    {
+      "type": "header",
       "content": "Image"
     },
     {
@@ -63,7 +108,7 @@
       "type": "checkbox",
       "id": "show_image",
       "label": "Show Image On Mobile",
-      "default": "false"
+      "default": false
     },
     {
       "type": "image_picker",

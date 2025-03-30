@@ -1,0 +1,26 @@
+<div class="toggle-icon">
+  <button id="toggleBtn">
+    <span class="menu-icon">
+     {% render 'menu-icon' %}
+    </span>
+    <span class="close-icon" style="display: none;">
+     {% render 'close-icon' %}
+    </span>
+  </button>
+  <div class="toggle-content">
+  {% if section.settings.top_text != blank %}
+    <p class="top_text">{{ section.settings.top_text }}</p>
+  {% endif %}
+  {% if section.settings.top_button_text != blank and section.settings.top_button_url != blank %}
+    <div class="button button-secondary btn desktop-btn no-margin">
+    <a href="{{ section.settings.top_button_url }}">{{ section.settings.top_button_text }}</a>
+    {% render 'right-arrow' %}
+    </div>
+  {% endif %}
+  </div>
+  </div>
+  {% if section.settings.logo != blank %}
+    <div class="logo">
+        <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" width="100%" height="100%" />
+    </div>
+  {% endif %}
