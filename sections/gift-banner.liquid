@@ -9,7 +9,7 @@
       </div>
       {% endif %}
       <div class="main-banner-content-wrapper">
-      <div class="main-banner-content">
+      <div class="main-banner-content left-column">
        {% if section.settings.heading != blank %}
        <h1>{{ section.settings.heading }}</h1>
        {% endif %}
@@ -26,6 +26,11 @@
       </div>
       <div class="right-column">
         <img src="{{ section.settings.image_second | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="100%" />
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <div class="button button-primary">
+            <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+          </div>
+          {% endif %}
       </div>
       </div>
     </div>

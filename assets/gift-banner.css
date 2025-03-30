@@ -9,26 +9,17 @@
 }
 
 .main-banner-content-wrapper {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 1px;
-    /* transform: translate(-79%, 6%); */
-    /* max-width: 1337px; */
-    /* margin: 0 auto; */
-    right: 50%;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /* flex-direction: column; */
-    height: 100%;
+    align-items: center;
+    gap: 30px;
+}
+.left-column, .right-column {
+    width: calc(50% - 30px);
+}
+.right-column img {
     width: 100%;
+    display: block;
 }
-
-.main-slideshow-banner {
-    position: relative;
-}
-
 .main-banner-content h1 {
     font-weight: 600;
     font-size: 70px;
