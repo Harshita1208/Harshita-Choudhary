@@ -211,10 +211,12 @@
        display: flex;
        align-items: center;
     }
-    .toggle-icon button, .toggle-icon button svg  {
+    .toggle-icon button {
         cursor: pointer;
-        transition: transform 0.3 ease;
     }
+    .toggle-icon button svg  {
+      transition: transform 0.3 ease;
+  }
     .toggle-content {
        background: #f2f2f2;
        padding: 25px;
