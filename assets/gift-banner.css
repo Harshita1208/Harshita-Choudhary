@@ -1,13 +1,13 @@
-  .main-toggle-mobile {
+  .main-toggle-drawer {
       display: none;
   }
   .main-toggle-dekstop {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0px;
+    padding: 10px 50px;
   }
-  .main-toggle-dekstop .logo img {
+  .logo img {
     display: block;
     width: 151.44px;
     height: 19px;
@@ -45,7 +45,7 @@
     width: 40%;
     max-width: 500px;
     margin-left: auto;
-    padding: 20px 0 50px 0;
+    padding: 20px 0px 40px 20px;
     display: flex;
     gap: 50px;
     flex-direction: column;
@@ -87,11 +87,14 @@
       letter-spacing: 0;
   }
     
-  .banner-subcontent p {
+  .banner-subcontent p, .banner-subcontent-mob p {
       margin: 0;
       font-size: 20px;
       line-height: 140%;
       letter-spacing: 0px;
+  }
+  .banner-subcontent-mob {
+    display: none;
   }
   
   .button {
@@ -116,7 +119,7 @@
   }
   .button-secondary svg path {
     fill: #000;
-}
+  }
   
   .right-column .mobile-btn {
     display: none;
@@ -129,75 +132,92 @@
     max-width: max-content;
   }
 
-  .bottom-text p {
+  .bottom-text p, .bottom-text_mob p {
     font-size: 16px;
     line-height: 13.42px;
     letter-spacing: 0px;
     text-align: center;
     margin: 0;
   }
-  .bottom-text {
+
+  .bottom-text, .bottom-text_mob {
     padding: 10px;
-}
+  }
+  .bottom-text_mob {
+    display: none;
+  }
+
+  @media (min-width: 1025px) and (max-width: 1199px){
+    .left-column {
+      padding: 20px 0px 20px 30px;
+      gap: 25px;
+     }
+     .main-banner-content h1 {
+      font-size: 50px;
+     }
+     .banner-subcontent p, .banner-subcontent-mob p {
+      line-height: normal;
+      font-size: 18px;
+    }
+  }
   
   @media (max-width: 1024px) {
     .main-banner-content-wrapper {
       flex-direction: column;
       min-height: auto;
     }
-    
     .left-column, .right-column {
       width: 100%;
       max-width: none;
-    }
-    
+    }    
     .left-column {
-      padding: 30px 20px;
-      gap: 30px;
-    }
-    
+      padding: 49px 20px 12px;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }   
     .right-column {
       min-height: 60vh;
-    }
-    
+    }   
     .main-banner-content h1 {
       font-size: 48px;
-    }
-    
+    }  
     .banner-subcontent p {
       font-size: 18px;
     }
-    
-    .desktop-btn {
-      display: none !important;
-    }
-    
-    .mobile-btn {
-      display: flex !important;
-    }
+    .main-toggle-dekstop {
+      padding: 10px 20px;
+  }
+  .button {
+    padding: 10px 30px;
+}
   }
   
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .main-banner-content h1 {
-      font-size: 36px;
+      font-size: 30px;
     }
-    
-    .banner-subcontent p {
+    .banner-subcontent p, .banner-subcontent-mob p {
       font-size: 16px;
     }
-    
+    .banner-subcontent {
+      display: none;
+    }
+    .banner-subcontent-mob {
+      display: block;
+    }
     .button {
       min-height: 40px;
       padding: 10px 20px 10px 30px;
     }
-    
     .right-column {
       min-height: auto;
       height: 50vh;
     }
     .natural-image {
       object-fit: cover;
-  }
+    }
     .main-banner-image {
         display: none;
     }
@@ -207,34 +227,76 @@
     .main-toggle-dekstop {
        display: none;
     }
+    .main-toggle-drawer {
+      display: block;
+    }
     .main-toggle-mobile {
-       display: flex;
-       align-items: center;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 23px 16px;
+      justify-content: space-between;
+      box-shadow: 0px 2px 4px 0px #00000026;
     }
-    .toggle-icon button {
-        cursor: pointer;
-    }
-    .toggle-icon button svg  {
-      transition: transform 0.3 ease;
+    .main-toggle-mobile .logo {
+      width: calc(100% - 20px);
+      max-width: 151px;
+      margin: 0 auto;
   }
-    .toggle-content {
-       background: #f2f2f2;
-       padding: 25px;
-       display: flex;
-       flex-direction: column;
-       gap: 16px;
-       overflow: hidden;
-       max-height: 0;
-       opacity: 0;
-       transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.3s ease-out;
+    .main-toggle-mobile .logo img {
+      margin: 0 auto;
     }
-    .toggle-content.show {
-        max-height: 200px;
-        opacity: 1;
-        padding: 25px;
+    .bottom-text_mob {
+      display: block;
     }
-    .bottom-text p {
+    .bottom-text_mob p {
       font-size: 14px;
+      line-height: normal;
     }
-    
-}
+    .bottom-text {
+      display: none;
+    }
+    .toggle-icon {
+      width: 30px;
+      display: flex;
+      justify-content: center;
+    }
+      .toggle-icon button {
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        padding: 0px;
+      }
+      .toggle-icon button svg  {
+        transition: transform 0.3 ease;
+      }
+      .toggle-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.3s ease-out;
+      }
+      .toggle-content.show {
+          background: #f2f2f2; 
+          padding: 25px;
+          max-height: 200px;
+          opacity: 1;
+          padding: 25px;
+      }
+      .toggle-content.show .button.button-secondary.btn.desktop-btn.no-margin {
+        display: flex;
+        margin: 0 auto;
+        } 
+        .left-column {
+          align-items: center;
+        }
+        .button.button-primary.btn.desktop-btn.no-margin {
+          display: none;
+      }
+      .right-column .mobile-btn {
+        display: block;
+    }
+  }

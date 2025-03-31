@@ -1,16 +1,15 @@
 {{ 'gift-banner.css' | asset_url | stylesheet_tag }}
-<script src="{{ toggle-drawer.js | asset_url }}"></script>
+<script src="{{ 'toggle-drawer.js' | asset_url }}"></script>
 
 <div class="gradient gift-banner-wrapper">
   <div class="section-{{ section.id }}-padding">
     <div class="main-slideshow-banner">
 
       <div class="main-top-banner color-{{ section.settings.top_color_scheme }}">
-      <div class="page-width">
-      <div class="main-toggle-mobile">
+      <div class="main-toggle-drawer">
        {% render 'toggle-drawer' %}
       </div>
-       <div class="main-toggle-dekstop">
+       <div class="main-toggle-dekstop page-width">
        {% if section.settings.logo != blank %}
         <div class="logo">
           <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" width="100%" height="100%" />
@@ -25,7 +24,6 @@
             {% render 'right-arrow' %}
           </div>
         {% endif %}
-      </div>
       </div>
       </div>
 
@@ -43,6 +41,11 @@
           {% if section.settings.content != blank %}
           <div class="banner-subcontent">
             {{ section.settings.content }}
+          </div>
+          {% endif %}
+          {% if section.settings.content-mob != blank %}
+          <div class="banner-subcontent-mob">
+            {{ section.settings.content-mob }}
           </div>
           {% endif %}
           {% if section.settings.button_text != blank and section.settings.button_url != blank %}
@@ -70,6 +73,12 @@
       {% if section.settings.bottom_text != blank %}
       <div class="bottom-text color-{{ section.settings.bottom_color_scheme }}">
         <p>{{ section.settings.bottom_text }}</p>
+      </div>
+      {% endif %}
+
+      {% if section.settings.bottom_text_mob != blank %}
+      <div class="bottom-text_mob color-{{ section.settings.bottom_color_scheme }}">
+        <p>{{ section.settings.bottom_text_mob }}</p>
       </div>
       {% endif %}
 
@@ -148,6 +157,11 @@
       "label": "Content"
     },
     {
+      "type": "richtext",
+      "id": "content-mob",
+      "label": "Show Content on Mobile"
+    },
+    {
       "type": "text",
       "id": "button_text",
       "label": "Button Text"
@@ -170,7 +184,12 @@
     {
       "type": "text",
       "id": "bottom_text",
-      "label": "Bottom Text"
+      "label": "Bottom Text On Dekstop"
+    },
+    {
+      "type": "text",
+      "id": "bottom_text_mob",
+      "label": "Bottom Text On Mobile"
     },
     {
       "type": "color_scheme",
