@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'Lustria';
+    src: url('https://cdn.shopify.com/s/files/1/0907/4651/9918/files/Lustria-Regular.ttf?v=1743530722') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+.product-grid-wrapper .page-width {
+    padding: 0px 50px;
+}
+.product-grid-heading {
+   padding-bottom: 30px;
+}
+.product-grid-heading h2{
+    font-family: 'Lustria';
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: 0px; 
+    color: #000;  
+}
+.product-grid-main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.product-grid-list {
+    width: calc(33% - 20px);
+    position: relative;
+}
+.product-grid-list img {
+    width: 100%;
+    display: block;
+}
+.product-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px){
+  .product-grid-wrapper .page-width {
+    padding: 0px 16px;
+  }  
+  .product-grid-heading {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+   .product-grid-heading h2{
+     font-size: 24px;   
+  }
+   .product-grid-main {
+     gap: 10px;
+  }
+  .product-grid-list {
+     width: calc(50% - 10px);
+  }
+}

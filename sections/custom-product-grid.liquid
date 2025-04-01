@@ -1,0 +1,98 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding product-grid-wrapper">
+  <div class="page-width">
+  <div class="product-grid-heading">
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="product-grid-main">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+        {% if product != blank %}
+          <div class="product-grid-list">
+           {% if block.settings.image != blank %}
+             <img src="{{ section.settings.image | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="100%" loading="lazy" /> 
+           {% else %}
+             <img src="{{ section.settings.featured_image | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="100%" loading="lazy" /> 
+           {% endif %}
+           <span class="product-icon">
+             {% render 'product-icon' %}
+           </span>
+          </div>
+        {% endif %}
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "tag": "section",
+  "class": "section custom-product-grid",
+  "settings": [
+    {
+      "type":"text",
+      "id":"title",
+      "label":"Heading"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks":[
+    {
+        "type":"product-grid",
+        "name":"Product Grid",
+        "settings":[
+            {
+                "type":"product",
+                "id":"product",
+                "label":"Select Product"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }
+        ]
+    }
+  ]
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
