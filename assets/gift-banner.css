@@ -106,7 +106,7 @@
     box-shadow: 0px 2px 4px 0px #00000033;
   }
   .button::after, .button::before {
-    display: none;
+    box-shadow: none;
   }
   
   .btn a {
@@ -127,7 +127,7 @@
   }
   
   .hover-slide-right a {
-    position: relative;
+    /* position: relative;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -136,25 +136,37 @@
     border: 1px solid #000;
     color: #000;
     text-decoration: none;
-    z-index: 1;
+    z-index: 1; */
     transition: color 0.3s ease;
   }
   
-  .hover-slide-right::before {
+.button.hover-slide-right:hover:before {
+    width: 100%;
+}
+.button.hover-slide-right:before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #ffd700; /* Yellow */
+    background-color: #000;
+    color: #fff;
     z-index: 0;
-    transition: width 0.3s ease-out;
-  }
-  
-  .hover-slide-right:hover::before {
-    width: 100%;
-  }
+    transition: width .3s ease-out;
+}
+
+.button-secondary.hover-slide-right:before {
+  background-color: #000;
+}
+.button-secondary.hover-slide-right:hover a span {
+  color: #fff;
+}
+.button span {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
   
   .hover-slide-right:hover a {
     color: #000; /* Text stays black */
@@ -172,6 +184,9 @@
   .hover-slide-right:hover svg {
     transform: translateX(5px);
   }
+  .button:not([disabled]):hover:after {
+    box-shadow: none;
+}
   
   
   .right-column .mobile-btn {
