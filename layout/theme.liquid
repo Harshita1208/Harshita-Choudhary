@@ -308,12 +308,13 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {% render 'product-grid-popup' %}
+    
 
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
+       {% render 'product-grid-popup' %}
     </main>
 
     {% sections 'footer-group' %}
@@ -375,5 +376,8 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+      <script src="{{ 'product-grid.js' | asset_url }}" defer="defer"></script>
+
   </body>
 </html>

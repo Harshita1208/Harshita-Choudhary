@@ -26,7 +26,7 @@
            {% else %}
              <img src="{{ product.featured_image | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="100%" loading="lazy" /> 
            {% endif %}
-           <span class="product-icon">
+           <span class="product-icon" data-product-url="{{ product.ur }}">
              {% render 'product-icon' %}
            </span>
           </div>
