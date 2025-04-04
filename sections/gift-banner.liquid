@@ -19,9 +19,13 @@
         <p class="top_text">{{ section.settings.top_text }}</p>
         {% endif %}
         {% if section.settings.top_button_text != blank and section.settings.top_button_url != blank %}
-          <div class="button button-secondary btn desktop-btn no-margin">
-            <a href="{{ section.settings.top_button_url }}">{{ section.settings.top_button_text }}</a>
-            {% render 'right-arrow' %}
+          <div class="button button-secondary btn desktop-btn no-margin hover-slide-right">
+            <a href="{{ section.settings.top_button_url }}">
+            <span>
+              {{ section.settings.top_button_text }}
+              {% render 'right-arrow' %}
+            </span>
+            </a>
           </div>
         {% endif %}
       </div>
