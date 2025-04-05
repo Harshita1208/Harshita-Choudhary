@@ -109,41 +109,35 @@ class ProductGridModal extends HTMLElement {
   updateVariantID(initialLoad = false) {
     const variantIdInput = this.querySelector("#selected-variant-id");
     const addToCartBtn = this.querySelector(".product-form_addbtn");
-
-    // if (this.querySelector('.no-variants-marker')) {
-    //   if (variantIdInput && addToCartBtn) {
-    //     addToCartBtn.disabled = false;
-    //     addToCartBtn.textContent = "Add to Cart";
-    //   }
-    //   return;
-    // }
-
+    const buttonTextSpan = addToCartBtn?.querySelector(".button-text"); 
+  
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
     const selectedSizeText = sizeSelect?.querySelector('.selected-option').textContent.trim();
-
-    if (addToCartBtn) {
+  
+    if (addToCartBtn && buttonTextSpan) {
       if (!colorBtn || !selectedSizeText || selectedSizeText === "Choose your size") {
         addToCartBtn.disabled = false;
-        addToCartBtn.textContent = "Add To Cart";
+        buttonTextSpan.textContent = "Add to Cart"; 
       } else {
         const variantString = `${colorBtn.dataset.value}/${selectedSizeText.toLowerCase().replace(/\s+/g, '-')}`;
         let variantId = "";
         let variantInventory = 1;
-
+  
         this.querySelectorAll(".select-option-hidden option").forEach(option => {
           if (option.value.toLowerCase() === variantString.toLowerCase()) {
             variantId = option.dataset.id;
             variantInventory = parseInt(option.dataset.inventory || "0");
           }
         });
-
+  
         if (variantIdInput) variantIdInput.value = variantId;
         addToCartBtn.disabled = !variantId || variantInventory <= 0;
-        addToCartBtn.textContent = variantInventory <= 0 ? "Sold Out" : "Add to Cart";
+        buttonTextSpan.textContent = variantInventory <= 0 ? "Sold Out" : "Add to Cart";
       }
     }
   }
+  
 
   async addToCart() {
     const variantId = this.querySelector("#selected-variant-id")?.value;
@@ -156,7 +150,6 @@ class ProductGridModal extends HTMLElement {
   
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
-  
     const items = [{ id: variantId, quantity: 1 }];
   
     if (colorBtn && sizeSelect) {
@@ -169,35 +162,52 @@ class ProductGridModal extends HTMLElement {
     }
   
     try {
-      // ✅ Step 1: Get existing cart
       const cartRes = await fetch('/cart.js');
       const cartData = await cartRes.json();
-  
       const alreadyInCart = cartData.items.some(item => item.variant_id == variantId);
   
       if (alreadyInCart) {
         this.showErrorMessage("This product is already in your cart.");
         return;
       }
-  
-      // ✅ Step 2: Add to cart if not already added
+
       const response = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items })
       });
-  
       if (!response.ok) throw new Error(await response.text());
-  
       this.close();
-  
-      // ✅ Redirect to full cart page
       window.location.href = '/cart';
     } catch (error) {
       console.error("Add to cart failed:", error);
       this.showErrorMessage("Something went wrong. Please try again.");
     }
   }
+
+  showErrorMessage(message) {
+    let errorBox = this.querySelector('.cart-error-message');
+    if (!errorBox) {
+      errorBox = document.createElement('div');
+      errorBox.className = 'cart-error-message';
+      errorBox.style.cssText = `
+        color: red;
+        margin-top: 10px;
+        font-size: 14px;
+        background: #ffe9e9;
+        padding: 8px 12px;
+        border-radius: 5px;
+      `;
+      this.querySelector('.add-to-cart')?.appendChild(errorBox);
+    }
+  
+    errorBox.textContent = message;
+  
+    setTimeout(() => {
+      errorBox.remove();
+    }, 3000);
+  }
+  
   
   
 
