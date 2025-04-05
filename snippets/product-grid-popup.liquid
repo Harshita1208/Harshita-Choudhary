@@ -85,12 +85,8 @@
             
             {% if product.available %}
             <input type="hidden" id="selected-product-id" value="{{ product.id }}" />
-            {% if product.variants.size > 1 %}
             <input type="hidden" id="selected-variant-id" value="{{ product.variants.first.id }}" />
-            {% else %}
-            <input type="hidden" id="selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}" />
-            {% endif %}
-
+      
               <div class="add-to-cart-wrapper">
                 <button type="submit" class="product-form_addbtn">
                   <span class="button-text">Add to cart</span>

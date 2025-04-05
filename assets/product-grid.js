@@ -83,7 +83,7 @@ class ProductGridModal extends HTMLElement {
   
       optionsList.querySelectorAll('li:not(.default-option)').forEach(option => {
         option.addEventListener('click', (e) => {
-          e.stopPropagation(); // ✅ prevents reopening
+          e.stopPropagation(); 
           select.querySelector('.selected-option').textContent = option.textContent;
           optionsList.classList.add('hidden');
           downArrow.classList.remove('rotated');
@@ -213,13 +213,8 @@ class ProductGridModal extends HTMLElement {
       errorBox.remove();
     }, 3000);
   }
-  
-  
-  
 
   showSizeError() {
-    //if (this.querySelector('.no-variants-marker')) return;
-
     const sizeReminder = this.querySelector('.size-reminder');
     if (sizeReminder) {
       sizeReminder.style.display = 'block';
@@ -241,17 +236,21 @@ class ProductGridModal extends HTMLElement {
   }
 
   showLoader() {
-    if (!this.querySelector('.modal-loader')) {
+    this.modalContent = this.querySelector('.product-grid-modalinfo');
+  
+    if (!this.modalContent.querySelector('.modal-loader')) {
       const loader = document.createElement('div');
       loader.className = 'modal-loader';
       loader.innerHTML = '<div class="loader-spinner"></div>';
       this.modalContent.appendChild(loader);
     }
-    this.querySelector('.modal-loader').classList.add('active');
+  
+    this.modalContent.querySelector('.modal-loader').classList.add('active');
   }
 
   hideLoader() {
-    this.querySelector('.modal-loader')?.classList.remove('active');
+    this.modalContent = this.querySelector('.product-grid-modalinfo'); // refresh reference
+    this.modalContent.querySelector('.modal-loader')?.classList.remove('active');
   }
 
   close() {
@@ -261,5 +260,4 @@ class ProductGridModal extends HTMLElement {
   }
 }
 
-// ✅ Correct placement — this line must be outside the class
 customElements.define('product-grid-modal', ProductGridModal);

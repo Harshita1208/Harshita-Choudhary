@@ -1,7 +1,7 @@
 {{ 'gift-banner.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'toggle-drawer.js' | asset_url }}"></script>
 
-<div class="gradient gift-banner-wrapper">
+<div class="gradient gift-banner-wrapper {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   <div class="section-{{ section.id }}-padding">
     <div class="main-slideshow-banner">
 
