@@ -4,6 +4,9 @@
     font-weight: 400;
     font-style: normal;
 }
+span, button {
+  font-family: Jost;
+}
 .product-grid-wrapper .page-width {
     padding: 0px 50px;
 }
