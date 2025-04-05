@@ -35,7 +35,7 @@
                     <div class="color-button-wrapper">
                       {% for value in option.values %}
                         <button type="button"
-                                class="color-button {% if option.selected_value == value %}selected{% endif %}"
+                                class="color-button"
                                 data-value="{{ value | handleize }}"
                                 data-option="{{ forloop.index0 }}">
                           <span class="color-button-indicator"
