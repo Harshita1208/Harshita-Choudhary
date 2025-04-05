@@ -151,14 +151,6 @@
             "custom_range_left": 40,
             "custom_range_right": 67
           }
-        },
-        "product_grid_3HDCU9": {
-          "type": "product-grid",
-          "settings": {
-            "product": "test",
-            "custom_range_left": 50,
-            "custom_range_right": 50
-          }
         }
       },
       "block_order": [
@@ -167,8 +159,7 @@
         "product_grid_erY9U8",
         "product_grid_UQUDgY",
         "product_grid_epjNnH",
-        "product_grid_gyrp8i",
-        "product_grid_3HDCU9"
+        "product_grid_gyrp8i"
       ],
       "settings": {
         "title": "Tisso vison in the wild",

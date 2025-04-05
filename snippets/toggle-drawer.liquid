@@ -22,7 +22,7 @@
     <p class="top_text">{{ section.settings.top_text }}</p>
   {% endif %}
   {% if section.settings.top_button_text != blank and section.settings.top_button_url != blank %}
-    <div class="button button-secondary btn desktop-btn no-margin">
+    <div class="button button-secondary btn desktop-btn no-margin hover-effect-secondary">
     <a href="{{ section.settings.top_button_url }}">{{ section.settings.top_button_text }}</a>
     {% render 'right-arrow' %}
     </div>
