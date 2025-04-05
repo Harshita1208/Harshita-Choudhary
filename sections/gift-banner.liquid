@@ -19,13 +19,10 @@
         <p class="top_text">{{ section.settings.top_text }}</p>
         {% endif %}
         {% if section.settings.top_button_text != blank and section.settings.top_button_url != blank %}
-          <div class="button button-secondary btn desktop-btn no-margin hover-slide-right">
+          <div class="button button-secondary btn desktop-btn no-margin hover-effect-secondary">
             <a href="{{ section.settings.top_button_url }}">
-            <span>
-              {{ section.settings.top_button_text }}
+              {{ section.settings.top_button_text }}</a>
               {% render 'right-arrow' %}
-            </span>
-            </a>
           </div>
         {% endif %}
       </div>
@@ -53,7 +50,7 @@
           </div>
           {% endif %}
           {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-          <div class="button button-primary btn desktop-btn no-margin ">
+          <div class="button button-primary btn desktop-btn no-margin hover-effect">
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
             {% render 'right-arrow' %}
           </div>

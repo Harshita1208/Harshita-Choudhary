@@ -70,34 +70,35 @@ class ProductGridModal extends HTMLElement {
 
   initializeOptions() {
     const customSelects = this.querySelectorAll('.custom-select');
-
+  
     customSelects.forEach(select => {
       const optionsList = select.querySelector('.options');
       const downArrow = select.querySelector('.select-downarrow');
-
+  
       select.addEventListener('click', (e) => {
         e.stopPropagation();
         optionsList.classList.toggle('hidden');
         downArrow.classList.toggle('rotated');
       });
-
+  
       optionsList.querySelectorAll('li:not(.default-option)').forEach(option => {
-        option.addEventListener('click', () => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation(); // ✅ prevents reopening
           select.querySelector('.selected-option').textContent = option.textContent;
           optionsList.classList.add('hidden');
           downArrow.classList.remove('rotated');
           this.sizeSelected = true;
-
+  
           const sizeReminder = this.querySelector('.size-reminder');
           if (sizeReminder) {
             sizeReminder.style.display = 'none';
           }
-
+  
           this.updateVariantID();
         });
       });
     });
-
+  
     document.addEventListener('click', () => {
       customSelects.forEach(select => {
         select.querySelector('.options').classList.add('hidden');
@@ -105,6 +106,7 @@ class ProductGridModal extends HTMLElement {
       });
     });
   }
+  
 
   updateVariantID(initialLoad = false) {
     const variantIdInput = this.querySelector("#selected-variant-id");
@@ -117,8 +119,10 @@ class ProductGridModal extends HTMLElement {
   
     if (addToCartBtn && buttonTextSpan) {
       if (!colorBtn || !selectedSizeText || selectedSizeText === "Choose your size") {
+        if (variantIdInput) variantIdInput.value = "";
         addToCartBtn.disabled = false;
-        buttonTextSpan.textContent = "Add to Cart"; 
+        buttonTextSpan.textContent = "Add to Cart";
+        return; 
       } else {
         const variantString = `${colorBtn.dataset.value}/${selectedSizeText.toLowerCase().replace(/\s+/g, '-')}`;
         let variantId = "";
@@ -143,11 +147,12 @@ class ProductGridModal extends HTMLElement {
     const variantId = this.querySelector("#selected-variant-id")?.value;
     const productId = this.querySelector("#selected-product-id")?.value;
   
-    if (!variantId || !productId) {
+    const selectedSizeText = this.querySelector('.custom-select .selected-option')?.textContent.trim();
+    if (!variantId || !productId || !selectedSizeText || selectedSizeText === "Choose your size") {
       this.showSizeError();
       return;
     }
-  
+
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
     const items = [{ id: variantId, quantity: 1 }];
@@ -181,7 +186,7 @@ class ProductGridModal extends HTMLElement {
       window.location.href = '/cart';
     } catch (error) {
       console.error("Add to cart failed:", error);
-      this.showErrorMessage("Something went wrong. Please try again.");
+      this.showErrorMessage("This product already in your cart.");
     }
   }
 
@@ -197,6 +202,7 @@ class ProductGridModal extends HTMLElement {
         background: #ffe9e9;
         padding: 8px 12px;
         border-radius: 5px;
+        letter-spacing: 0;
       `;
       this.querySelector('.add-to-cart')?.appendChild(errorBox);
     }

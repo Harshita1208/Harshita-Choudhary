@@ -19,7 +19,7 @@
               <h2 class="product-title">{{ product.title }}</h2>
               <span id="variant-price"
                     data-price="{{ product.selected_or_first_available_variant.price }}">{{ product.price | money }}</span>
-              <div class="product_description">{{ product.description | truncate: 50 }}</div>
+              <div class="product_description">{{ product.description }}</div>
             </div>
           </div>
 
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="size-reminder"
-                         style="color: red; display: none; margin: 5px 0 0 0; letter-spacing: 0; font-size: 10px;">
+                         style="color: red; display: none; margin: 5px 0 0 0; letter-spacing: 0; font-size: 13px;">
                       Please select your size.
                     </div>
                   {% endif %}
@@ -82,10 +82,15 @@
           </div>
 
           <div class="add-to-cart">
-            <input type="hidden" id="selected-product-id" value="{{ product.id }}" />
-            <input type="hidden" id="selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}" />
-
+            
             {% if product.available %}
+            <input type="hidden" id="selected-product-id" value="{{ product.id }}" />
+            {% if product.variants.size > 1 %}
+            <input type="hidden" id="selected-variant-id" value="{{ product.variants.first.id }}" />
+            {% else %}
+            <input type="hidden" id="selected-variant-id" value="{{ product.selected_or_first_available_variant.id }}" />
+            {% endif %}
+
               <div class="add-to-cart-wrapper">
                 <button type="submit" class="product-form_addbtn">
                   <span class="button-text">Add to cart</span>

@@ -107,37 +107,57 @@
         "product_grid_E6EjdG": {
           "type": "product-grid",
           "settings": {
-            "product": "black-leather-bag"
+            "product": "black-leather-bag",
+            "custom_range_left": 50,
+            "custom_range_right": 60
           }
         },
         "product_grid_qDjKiG": {
           "type": "product-grid",
           "settings": {
-            "product": "blue-silk-tuxedo"
+            "product": "blue-silk-tuxedo",
+            "custom_range_left": 70,
+            "custom_range_right": 50
           }
         },
         "product_grid_erY9U8": {
           "type": "product-grid",
           "settings": {
-            "product": "chequered-red-shirt"
+            "product": "chequered-red-shirt",
+            "custom_range_left": 50,
+            "custom_range_right": 30
           }
         },
         "product_grid_UQUDgY": {
           "type": "product-grid",
           "settings": {
-            "product": "classic-leather-jacket"
+            "product": "classic-leather-jacket",
+            "custom_range_left": 60,
+            "custom_range_right": 10
           }
         },
         "product_grid_epjNnH": {
           "type": "product-grid",
           "settings": {
-            "product": "classic-varsity-top"
+            "product": "classic-varsity-top",
+            "custom_range_left": 50,
+            "custom_range_right": 15
           }
         },
         "product_grid_gyrp8i": {
           "type": "product-grid",
           "settings": {
-            "product": "dark-denim-top"
+            "product": "dark-denim-top",
+            "custom_range_left": 40,
+            "custom_range_right": 67
+          }
+        },
+        "product_grid_3HDCU9": {
+          "type": "product-grid",
+          "settings": {
+            "product": "test",
+            "custom_range_left": 50,
+            "custom_range_right": 50
           }
         }
       },
@@ -147,12 +167,13 @@
         "product_grid_erY9U8",
         "product_grid_UQUDgY",
         "product_grid_epjNnH",
-        "product_grid_gyrp8i"
+        "product_grid_gyrp8i",
+        "product_grid_3HDCU9"
       ],
       "settings": {
         "title": "Tisso vison in the wild",
         "padding_top": 92,
-        "padding_bottom": 36
+        "padding_bottom": 92
       }
     }
   },

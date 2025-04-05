@@ -9,6 +9,8 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding product-grid-wrapper">
@@ -26,9 +28,11 @@
            {% else %}
              <img src="{{ product.featured_image | img_url: 'master'}}" alt="{{ shop.name}}" width="100%" height="100%" loading="lazy" /> 
            {% endif %}
-           <span class="product-icon" data-product-url="{{ product.url }}">
-             {% render 'product-icon' %}
-           </span>
+            <span class="product-icon"
+                  data-product-url="{{ product.url }}"
+                  style="top: {{ block.settings.custom_range_right }}%; left: {{ block.settings.custom_range_left }}%;">
+              {% render 'product-icon' %}
+            </span>
           </div>
         {% endif %}
     {% endfor %}
@@ -86,7 +90,25 @@
                 "type":"image_picker",
                 "id":"image",
                 "label":"Image"
-            }
+            },
+            {
+                "type": "range",
+                "id": "custom_range_left",
+                "label": "Horizontal Position",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "default": 50
+              },
+              {
+                "type": "range",
+                "id": "custom_range_right",
+                "label": "Vertical Position",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "default": 50
+              }
         ]
     }
   ],
