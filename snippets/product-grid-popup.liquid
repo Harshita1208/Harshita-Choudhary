@@ -19,7 +19,7 @@
               <h2 class="product-title">{{ product.title }}</h2>
               <span id="variant-price"
                     data-price="{{ product.selected_or_first_available_variant.price }}">{{ product.price | money }}</span>
-              <div class="product_description">{{ product.description }}</div>
+              <div class="product_description">{{ product.description | truncate: 30 }}</div>
             </div>
           </div>
 
