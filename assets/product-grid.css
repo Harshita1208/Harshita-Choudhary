@@ -117,9 +117,9 @@
 }
 .product-grid-modal-content {
   background: #fff;
-  padding: 20px;
-  max-width: 90vw;
-  max-height: 90vh;
+  padding: 20px 20px 25px 20px;
+  max-width: 311px;
+  max-height: fit-content;
   overflow-y: auto;
 }
 .product-grid-modal-toggle {
@@ -131,15 +131,25 @@
 .product-detail-wrapper {
   width: 100%;
   display: flex;
-  gap: 15px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
-.product-image {
-  width: 40%;
+.product_description p {
+  margin: 12px 0px 0px 0px;
+  color: #000;
+}
+.product-form__input legend {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+}
+.product-image, .product-detail {
+  width: 50%;
 }
 .product-image img {
   width: 100%;
-  max-width: 120px;
-  height: 140px;
   object-fit: cover;
   display: block;
 }
@@ -169,20 +179,23 @@
 .color-button-wrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 6px;
+  align-items: center;
+  justify-content: center;
 }
 button.color-button {
-  font-size: 18x;
+  font-size: 18px;
   text-transform: capitalize;
   overflow: hidden;
   display: flex;
-  padding: 10px;
+  padding: 10px 8px 10px 15px;
   letter-spacing: 0px;
   box-sizing: content-box;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   position: relative;
   border: 1px solid #000;
   background: transparent;
+  width: 40%;
+  cursor: pointer;
 }
 .color-button.selected {
   border-color: #000000;
@@ -190,12 +203,13 @@ button.color-button {
   color: #fff;
 }
 .color-button-indicator {
-   position: absolute;
-   left:0;
-   top:50%;
-   transform: translateY(-50%);
-   width: 12px;
-   height: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 100%;
+  border-right: 1px solid #000;
 }
 .custom-select-wrapper {
   position: relative;
@@ -204,7 +218,6 @@ button.color-button {
 }
 .custom-select {
   position: relative;
-  padding: 10px 30px 10px 10px;
   border: 1px solid #000;
   color: #000;
   cursor: pointer;
@@ -216,14 +229,19 @@ button.color-button {
 }
 .selected-option {
   font-size: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 6px 13px;
 }
-.select-downarrow.rotated {
+.select-downarrow.rotated svg {
   transform: rotate(180deg);
 }
 .select-downarrow {
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      transition: transform .3s ease;
+      border-left: 1px solid #000;
+      padding: 16px;
 }
 .product-variants fieldset {
     padding: 0;
@@ -233,15 +251,11 @@ button.color-button {
     border: none;
 }
 .options:not(.hidden) {
+  max-height: 95px;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.options:not(.hidden) {
-  max-height: 100px;
-  opacity: 1;
 }
 .options {
   position: absolute;
@@ -254,20 +268,14 @@ button.color-button {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: 0;
+  overflow-y: scroll;
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
-}
-.options {
-  transition: all 0.3s ease;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
 }
 .options li {
   padding: 10px;
@@ -278,25 +286,27 @@ button.color-button {
   background-color: #000;
   color: #fff;
 }
+.add-to-cart {
+  margin-top: 50px;
+}
 .add-to-cart-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .product-form_addbtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   background-color: #000;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color .3s ease;
+  width: 100%;
 }
 
 .product-form_addbtn:hover {

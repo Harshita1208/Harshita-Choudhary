@@ -110,13 +110,13 @@ class ProductGridModal extends HTMLElement {
     const variantIdInput = this.querySelector("#selected-variant-id");
     const addToCartBtn = this.querySelector(".product-form_addbtn");
 
-    if (this.querySelector('.no-variants-marker')) {
-      if (variantIdInput && addToCartBtn) {
-        addToCartBtn.disabled = false;
-        addToCartBtn.textContent = "Add to Cart";
-      }
-      return;
-    }
+    // if (this.querySelector('.no-variants-marker')) {
+    //   if (variantIdInput && addToCartBtn) {
+    //     addToCartBtn.disabled = false;
+    //     addToCartBtn.textContent = "Add to Cart";
+    //   }
+    //   return;
+    // }
 
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
@@ -124,8 +124,8 @@ class ProductGridModal extends HTMLElement {
 
     if (addToCartBtn) {
       if (!colorBtn || !selectedSizeText || selectedSizeText === "Choose your size") {
-        addToCartBtn.disabled = true;
-        addToCartBtn.textContent = "Select Options";
+        addToCartBtn.disabled = false;
+        addToCartBtn.textContent = "Add To Cart";
       } else {
         const variantString = `${colorBtn.dataset.value}/${selectedSizeText.toLowerCase().replace(/\s+/g, '-')}`;
         let variantId = "";
@@ -164,7 +164,7 @@ class ProductGridModal extends HTMLElement {
       const size = sizeSelect.querySelector('.selected-option').textContent.trim().toLowerCase();
 
       if (color === 'black' && size === 'm') {
-        items.push({ id: '41252714676392', quantity: 1 });
+        items.push({ id: '51966079762798', quantity: 1 });
       }
     }
 
@@ -195,7 +195,7 @@ class ProductGridModal extends HTMLElement {
   }
 
   showSizeError() {
-    if (this.querySelector('.no-variants-marker')) return;
+    //if (this.querySelector('.no-variants-marker')) return;
 
     const sizeReminder = this.querySelector('.size-reminder');
     if (sizeReminder) {
