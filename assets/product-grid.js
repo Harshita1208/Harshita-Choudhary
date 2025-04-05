@@ -146,14 +146,14 @@ class ProductGridModal extends HTMLElement {
   async addToCart() {
     const variantId = this.querySelector("#selected-variant-id")?.value;
     const productId = this.querySelector("#selected-product-id")?.value;
-  
+    const colorBtn = this.querySelector('.color-button.selected')?.textContent.trim();
     const selectedSizeText = this.querySelector('.custom-select .selected-option')?.textContent.trim();
-    if (!variantId || !productId || !selectedSizeText || selectedSizeText === "Choose your size") {
+    if (!variantId || !productId || !selectedSizeText || !colorBtn || selectedSizeText === "Choose your size") {
       this.showSizeError();
       return;
     }
 
-    const colorBtn = this.querySelector('.color-button.selected');
+    //const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
     const items = [{ id: variantId, quantity: 1 }];
   

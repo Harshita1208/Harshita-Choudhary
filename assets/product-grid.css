@@ -14,7 +14,7 @@ span, button {
    padding-bottom: 30px;
 }
 .product-grid-heading h2{
-    font-family: 'Lustria';
+    font-family: 'Lustria' !important;
     font-weight: 400;
     font-size: 36px;
     line-height: 120%;
