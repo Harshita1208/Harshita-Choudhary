@@ -154,21 +154,33 @@ class ProductGridModal extends HTMLElement {
       return;
     }
   
-    const items = [{ id: variantId, quantity: 1 }];
-  
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
+  
+    const items = [{ id: variantId, quantity: 1 }];
   
     if (colorBtn && sizeSelect) {
       const color = colorBtn.textContent.trim().toLowerCase();
       const size = sizeSelect.querySelector('.selected-option').textContent.trim().toLowerCase();
   
       if (color === 'black' && size === 'm') {
-        items.push({ id: '51966079762798', quantity: 1 }); // Bonus item
+        items.push({ id: '51966079762798', quantity: 1 });
       }
     }
   
     try {
+      // ✅ Step 1: Get existing cart
+      const cartRes = await fetch('/cart.js');
+      const cartData = await cartRes.json();
+  
+      const alreadyInCart = cartData.items.some(item => item.variant_id == variantId);
+  
+      if (alreadyInCart) {
+        this.showErrorMessage("This product is already in your cart.");
+        return;
+      }
+  
+      // ✅ Step 2: Add to cart if not already added
       const response = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -177,21 +189,16 @@ class ProductGridModal extends HTMLElement {
   
       if (!response.ok) throw new Error(await response.text());
   
-      // Optional: You can log or store the returned cart data
-      const newCartData = await response.json();
-      console.log("Cart update successful:", newCartData);
-  
-      // Close modal if needed
       this.close();
   
-      // ✅ Redirect to cart page
+      // ✅ Redirect to full cart page
       window.location.href = '/cart';
-  
-      return newCartData;
     } catch (error) {
       console.error("Add to cart failed:", error);
+      this.showErrorMessage("Something went wrong. Please try again.");
     }
   }
+  
   
 
   showSizeError() {
