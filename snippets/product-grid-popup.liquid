@@ -52,7 +52,6 @@
                           {% render 'downarrow' %}
                         </div>
                         <ul class="options hidden">
-                          <li class="default-option">Choose your size</li>
                           {% for value in option.values %}
                             <li data-value="{{ value | handleize }}">{{ value }}</li>
                           {% endfor %}
