@@ -148,51 +148,51 @@ class ProductGridModal extends HTMLElement {
   async addToCart() {
     const variantId = this.querySelector("#selected-variant-id")?.value;
     const productId = this.querySelector("#selected-product-id")?.value;
-
+  
     if (!variantId || !productId) {
       this.showSizeError();
       return;
     }
-
+  
     const items = [{ id: variantId, quantity: 1 }];
-
+  
     const colorBtn = this.querySelector('.color-button.selected');
     const sizeSelect = this.querySelector('.custom-select');
-
+  
     if (colorBtn && sizeSelect) {
       const color = colorBtn.textContent.trim().toLowerCase();
       const size = sizeSelect.querySelector('.selected-option').textContent.trim().toLowerCase();
-
+  
       if (color === 'black' && size === 'm') {
-        items.push({ id: '51966079762798', quantity: 1 });
+        items.push({ id: '51966079762798', quantity: 1 }); // Bonus item
       }
     }
-
+  
     try {
       const response = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items,
-          sections: ['cart-drawer', 'cart-icon-bubble']
-        })
+        body: JSON.stringify({ items })
       });
-
+  
       if (!response.ok) throw new Error(await response.text());
-
+  
+      // Optional: You can log or store the returned cart data
       const newCartData = await response.json();
       console.log("Cart update successful:", newCartData);
-
-      const cart = document.querySelector('cart-drawer');
-      if (cart && cart.renderContents) {
-        cart.renderContents(newCartData);
-      }
+  
+      // Close modal if needed
       this.close();
+  
+      // ✅ Redirect to cart page
+      window.location.href = '/cart';
+  
       return newCartData;
     } catch (error) {
       console.error("Add to cart failed:", error);
     }
   }
+  
 
   showSizeError() {
     //if (this.querySelector('.no-variants-marker')) return;
